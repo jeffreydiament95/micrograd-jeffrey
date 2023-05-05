@@ -1,1 +1,30 @@
 .ipynb_checkpoints/
+
+# Compiled python files
+__pycache__/
+*.pyc
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# IDE
+.vscode/
+*.code-workspace
+
+# Local environment
+.env
+venv/
+env/
+*.venv
+*.env
+*.env.*
+.Python
+
+# Miscellaneous
+*.log
+*.bak
+*.swp
+.DS_Store
+Thumbs.db
