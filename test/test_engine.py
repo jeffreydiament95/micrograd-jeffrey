@@ -65,3 +65,35 @@ def test_more_ops():
     # backward pass went well
     assert abs(amg.grad - apt.grad.item()) < tol
     assert abs(bmg.grad - bpt.grad.item()) < tol
+    
+def test_tanh():
+    xmg = Value(-4.0)
+    ymg = xmg.tanh()
+    ymg.backward()
+    
+    xpt = torch.Tensor([-4.0]).double()
+    xpt.requires_grad = True
+    ypt = xpt.tanh()
+    ypt.backward()
+    
+    tol = 1e-6
+    # forward pass went well
+    assert abs(ymg.data - ypt.data.item()) < tol
+    #backward pass went well
+    assert abs(xmg.grad - xpt.grad.item()) < tol
+    
+def test_sigmoid():
+    xmg = Value(-4.0)
+    ymg = xmg.sigmoid()
+    ymg.backward()
+    
+    xpt = torch.Tensor([-4.0]).double()
+    xpt.requires_grad = True
+    ypt = xpt.sigmoid()
+    ypt.backward()
+    
+    tol = 1e-6
+    # forward pass went well
+    assert abs(ymg.data - ypt.data.item()) < tol
+    #backward pass went well
+    assert abs(xmg.grad - xpt.grad.item()) < tol
